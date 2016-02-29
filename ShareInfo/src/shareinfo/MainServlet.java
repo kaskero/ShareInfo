@@ -44,20 +44,28 @@ public class MainServlet extends HttpServlet{
     	} else {
     		System.out.println("     User is logged in");
     		
-    		String message = request.getParameter("message");
-    		if(message != null) {
+    		String action = request.getParameter("action");
+    		if(action != null) {
     			HttpSession session = request.getSession();
-    		    String username = (String) session.getAttribute("username");
-    	        mySQLdb.setMessageInfo(message, username);
+    		    session.invalidate();
+    		    System.out.println("     Login error: redirecting the user to loginForm.html");
+        		RequestDispatcher rd = request.getRequestDispatcher("/html/loginForm.html");
+    			rd.forward(request, response);
+    		} else {
+    			String message = request.getParameter("message");
+    			if(message != null) {
+    				HttpSession session = request.getSession();
+    				String username = (String) session.getAttribute("username");
+    				mySQLdb.setMessageInfo(message, username);
+    			}
+    		
+    			ArrayList<MessageInfo> messageList = mySQLdb.getAllMessages();
+    			request.setAttribute("messageList", messageList);
+    		
+    			System.out.println("     Redirecting the user to viewMessages.jsp");
+    			RequestDispatcher rd = request.getRequestDispatcher("/jsp/viewMessages.jsp");
+    			rd.forward(request, response);
     		}
-    		
-    		ArrayList<MessageInfo> messageList = mySQLdb.getAllMessages();
-    		request.setAttribute("messageList", messageList);
-    		
-    		System.out.println("     Redirecting the user to viewMessages.jsp");
-    		RequestDispatcher rd = request.getRequestDispatcher("/jsp/viewMessages.jsp");
-			rd.forward(request, response);
-    		
     	}
     	
         System.out.println("---> Exiting doPost() MainServlet");

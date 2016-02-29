@@ -20,6 +20,9 @@
 			<a href="/ShareInfo/servlet/MainServlet" style="text-decoration: none">
 				<font color="white">Refresh</font>
 			</a>
+			<a href="/ShareInfo/servlet/MainServlet?action=logout" style="text-decoration: none">
+				<font color="white">Logout</font>
+			</a>
 		</section>
 		<section>
 		    <font color="white">You are logged in as: </font>
