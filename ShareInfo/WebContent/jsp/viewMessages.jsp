@@ -39,7 +39,7 @@
 				<table>
 	   				<tr>
 	   					<td>Message:</td>
-	   					<td><textarea name="message" cols="50" rows="5"></textarea></td>
+	   					<td><textarea id="message" name="message" cols="50" rows="5"></textarea></td>
 	   				</tr>
 	 			</table>
 				<button>Send</button>

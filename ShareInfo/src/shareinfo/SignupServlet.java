@@ -33,6 +33,8 @@ public class SignupServlet extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/html/loginForm.html");
 		rd.forward(request, response);
 		
+		//response.sendRedirect("/ShareInfo/html/loginForm.html"); // 302 redirect - location goiburua
+		
         System.out.println("---> Exiting doPost() SignupServlet");
     }
 }

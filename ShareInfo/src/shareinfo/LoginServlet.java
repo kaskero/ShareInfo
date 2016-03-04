@@ -32,7 +32,9 @@ public class LoginServlet extends HttpServlet{
 		String username = mySQLdb.getUsername(email, password);
 		if(username == null) {
 			System.out.println("     Login error: redirecting the user to loginForm.html");
-			RequestDispatcher rd = request.getRequestDispatcher("/html/loginForm.html");
+			boolean loginerror = true;
+			request.setAttribute("login_error", loginerror);
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/newLoginForm.jsp");
 			rd.forward(request, response);
 		} else {
 			HttpSession session = request.getSession(true);
@@ -40,7 +42,7 @@ public class LoginServlet extends HttpServlet{
 			String sessionID = session.getId();
 			System.out.println("     User session for " + username + ": " + sessionID);
 			System.out.print("     Getting loggedin userlist from servlet context: ");
-			ServletContext context = request.getServletContext();
+			ServletContext context = request.getServletContext(); // testuingurua
 			HashMap<String, String> loggedinUsers = (HashMap) context.getAttribute("loggedin_users");
 			if(loggedinUsers == null) {
 				System.out.println("list is empty");

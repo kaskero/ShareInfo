@@ -5,7 +5,7 @@
     <welcome-file>/html/loginForm.html</welcome-file>
   </welcome-file-list>
   <session-config>
-	<session-timeout>5</session-timeout>
+	<session-timeout>1</session-timeout>
   </session-config>
   <listener>
     <listener-class>shareinfo.MySessionListener</listener-class>
