@@ -60,6 +60,13 @@
 	   		<% } %>
 	 			</table>
 		</section>		
-		<footer>Web Systems - EUITI Bilbao</footer> 
+		<footer>
+   			Server Date: <%=new Date().toString()%>
+			<script language="javascript">
+	    		var fecha = new Date();
+				document.write(" -- Client Date: ");
+				document.write(fecha);
+			</script>
+		</footer>
 	</body>
 </html>
